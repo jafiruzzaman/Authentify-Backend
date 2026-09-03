@@ -37,8 +37,8 @@ app.use(helmet());
 /* Rate limit configuration */
 app.use(
   rateLimit({
-    windowMs: env.rateLimit.windowMs,
-    limit: env.rateLimit.max,
+    windowMs: env.ratelimit.windowMS,
+    limit: env.ratelimit.max,
     message: "Too many requests from this IP. Please try again later.",
   })
 );
@@ -66,8 +66,6 @@ app.use(
 /* ============================================================= Logging Middleware ============================================================= */
 
 /* Morgan configuration */
-app.use(
-  morgan(env.server.nodeEnv === "development" ? "dev" : "combined")
-);
+app.use(morgan(env.server.nodeEnv === "development" ? "dev" : "combined"));
 
 export { app };
